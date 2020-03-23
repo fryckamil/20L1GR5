@@ -320,7 +320,7 @@ JavaFX Scene Builder. Narzędzie do projektowania wizualnego dla aplikacji JavaF
 #### Diagram przypadków  użycia 
 
 
-![tekst alternatywny](/na_githuba/src/uml/diagram_przypadków_uzyucia.png)
+![Diagram przypadków  użycia](/na_githuba/src/uml/diagram_przypadków_uzyucia.PNG)
 
 
 System nosi nazwę Biblioteka. Jest to aplikacja dzięki której można wypożyczyć książkę. Aktorami w tym systemie są: bibliotekarz czyli osoba zarządzająca biblioteką, użytkownik czyli osoba która założyła konto. W skład tego systemu wchodzą następujące przypadki użycia:
@@ -336,16 +336,16 @@ System nosi nazwę Biblioteka. Jest to aplikacja dzięki której można wypożyc
 
 
 
-![tekst alternatywny](/na_githuba/src/uml/diagram_klas.png)
+![Diagram klas](/na_githuba/src/uml/diagram_klas.PNG)
 
 
 
 #### Diagram aktywności
 
-![tekst alternatywny](/na_githuba/src/uml/diagram_aktywnosi.png)
+![Diagram aktywności](/na_githuba/src/uml/diagram_aktywnosi.PNG)
 
 
 
 #### Diagram sekwencji
 
-![tekst alternatywny](/na_githuba/src/uml/diagram_sekwencjii.png)
+![Diagram sekwencji](/na_githuba/src/uml/diagram_sekwencjii.PNG)
