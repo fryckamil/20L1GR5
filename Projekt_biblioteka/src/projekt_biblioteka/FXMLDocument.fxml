@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -7,6 +8,8 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -28,20 +31,21 @@
           </Menu>
           <Menu mnemonicParsing="false" onAction="#skw" text="Biblioteka">
             <items>
+                  <MenuItem fx:id="tab" mnemonicParsing="false" onAction="#tabela" text="Tabela książek" />
                   <MenuItem fx:id="menu_zwrot1" mnemonicParsing="false" onAction="#wypozycz1" text="Wypożycz książkę" />
               <MenuItem fx:id="menu_zwrot" mnemonicParsing="false" onAction="#zwrot" text="Zwrot książki" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <ImageView fitHeight="584.0" fitWidth="568.0" layoutX="-1.0" layoutY="101.0">
+      <ImageView fx:id="regal" fitHeight="584.0" fitWidth="690.0" layoutX="-121.0" layoutY="105.0">
                <image>
                   <Image url="@regal.jpg" />
                </image>
             </ImageView>
       <Label fx:id="lagin" layoutX="189.0" layoutY="110.0" prefHeight="25.0" prefWidth="150.0" text="Podaj swój login" />
       <TextField fx:id="login_pod" layoutX="421.0" layoutY="110.0" prefHeight="25.0" prefWidth="150.0" />
-      <ComboBox fx:id="wybor" layoutX="571.0" layoutY="238.0" prefHeight="27.0" prefWidth="366.0" promptText="Wybierz książkę" style="-fx-border-color: black; -fx-background-color: #a80000; -fx-background-radius: 5; -fx-border-radius: 5;">
+      <ComboBox fx:id="wybor" layoutX="568.0" layoutY="287.0" prefHeight="27.0" prefWidth="366.0" promptText="Wybierz książkę" style="-fx-border-color: black; -fx-background-color: #a80000; -fx-background-radius: 5; -fx-border-radius: 5;">
          <effect>
             <DropShadow color="WHITE" />
          </effect></ComboBox>
@@ -82,7 +86,7 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="loginSingInButton" layoutX="655.0" layoutY="516.0" mnemonicParsing="false" prefHeight="51.2" prefWidth="182.4" style="-fx-background-color: #a80000; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 10; -fx-border-width: 1;" text="Załóż konto" textFill="#dfdfdf">
+                  <Button fx:id="loginSingInButton" layoutX="655.0" layoutY="516.0" mnemonicParsing="false" onAction="#zal_konto" prefHeight="51.2" prefWidth="182.4" style="-fx-background-color: #a80000; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 10; -fx-border-width: 1;" text="Załóż konto" textFill="#dfdfdf">
                <font>
                   <Font name="Segoe UI Black" size="18.0" />
                </font></Button>
@@ -112,7 +116,7 @@
             <Font name="Segoe UI Black" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="loginSingInButton1" layoutX="655.0" layoutY="516.0" mnemonicParsing="false" prefHeight="51.2" prefWidth="182.4" style="-fx-background-color: #a80000; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 10; -fx-border-width: 1;" text="Wypożycz" textFill="#dfdfdf">
+      <Button fx:id="loginSingInButton1" layoutX="655.0" layoutY="516.0" mnemonicParsing="false" onAction="#log" prefHeight="51.2" prefWidth="182.4" style="-fx-background-color: #a80000; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 10; -fx-border-width: 1;" text="Wypożycz" textFill="#dfdfdf">
          <font>
             <Font name="Segoe UI Black" size="18.0" />
          </font>
@@ -127,7 +131,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="surname_field1" alignment="CENTER" layoutX="282.0" layoutY="423.0" prefHeight="27.0" prefWidth="312.0" promptText="Nazwisko" style="-fx-border-color: black; -fx-background-color: #a80000; -fx-border-radius: 5; -fx-background-radius: 5;">
+      <TextField fx:id="surname_field1" alignment="CENTER" layoutX="256.0" layoutY="395.0" prefHeight="27.0" prefWidth="312.0" promptText="Nazwisko" style="-fx-border-color: black; -fx-background-color: #a80000; -fx-border-radius: 5; -fx-background-radius: 5;">
          <font>
             <Font size="14.0" />
          </font>
@@ -195,5 +199,54 @@
                         <Font name="Segoe UI Black" size="18.0" />
                      </font>
                   </Button>
+      <Button fx:id="wroc" layoutX="655.0" layoutY="587.0" mnemonicParsing="false" onAction="#wypozycz1" prefHeight="51.2" prefWidth="182.4" style="-fx-background-color: #a80000; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 10; -fx-border-width: 1;" text="Wróć" textFill="#dfdfdf">
+         <font>
+            <Font name="Segoe UI Black" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="baza" layoutX="466.0" layoutY="542.0" mnemonicParsing="false" onAction="#czysc" prefHeight="51.2" prefWidth="182.4" style="-fx-background-color: #a80000; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 10; -fx-border-width: 1;" text="Czyść bazę" textFill="#dfdfdf">
+         <font>
+            <Font name="Segoe UI Black" size="18.0" />
+         </font></Button>
+      <Button fx:id="laduj" layoutX="264.0" layoutY="542.0" mnemonicParsing="false" onAction="#lad" prefHeight="52.0" prefWidth="213.0" style="-fx-background-color: #a80000; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 10; -fx-border-width: 1;" text="Ładuj dane do bazy" textFill="#dfdfdf">
+         <font>
+            <Font name="Segoe UI Black" size="18.0" />
+         </font></Button>
+      <TextField fx:id="pod_data_zwt" alignment="CENTER" layoutX="573.0" layoutY="334.0" prefHeight="32.0" prefWidth="366.0" promptText="Data zwrotu rrrr-mm-dd" style="-fx-border-color: black; -fx-background-color: #a80000; -fx-border-radius: 5; -fx-background-radius: 5;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="logg" alignment="CENTER" layoutX="291.0" layoutY="474.0" prefHeight="27.0" prefWidth="312.0" promptText="Nazwisko" style="-fx-border-color: black; -fx-background-color: #a80000; -fx-border-radius: 5; -fx-background-radius: 5;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Text fx:id="log_po1" fill="#dfdfdf" layoutX="571.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jesteś zalogowany jako" wrappingWidth="365.9999942779541">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Label fx:id="witaj1" alignment="CENTER" layoutX="563.0" layoutY="169.0" prefHeight="62.0" prefWidth="376.0" text="Witaj!" textFill="#dfdfdf">
+         <font>
+            <Font name="Segoe UI Black" size="40.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tab_ksiazka" accessibleRole="TABLE_CELL" accessibleText="cvc" editable="true" layoutX="447.0" layoutY="236.0" prefHeight="442.0" prefWidth="492.0" tableMenuButtonVisible="true">
+        <columns>
+          <TableColumn fx:id="tytul" prefWidth="129.3" text="Tytuł" />
+          <TableColumn fx:id="autor" prefWidth="133.3" text="Autor" />
+            <TableColumn fx:id="rok" prefWidth="77.0" text="Rok wydania" />
+            <TableColumn fx:id="gatunek" prefWidth="133.3" text="Gatunek" />
+        </columns>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TableView>
+      <Label fx:id="ks_ta" alignment="CENTER" layoutX="454.0" layoutY="104.0" prefHeight="132.0" prefWidth="443.0" text="Tabela książek" textFill="#cfcfcf">
+         <font>
+            <Font name="Segoe UI Black" size="61.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
