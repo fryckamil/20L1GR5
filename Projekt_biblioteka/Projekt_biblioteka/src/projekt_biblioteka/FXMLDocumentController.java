@@ -18,11 +18,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import static java.time.LocalTime.now;
-import java.time.Month;
-import java.time.Period;
-import static java.time.Period.between;
-import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -53,6 +48,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+
 import utils.connection;
 
 /**
@@ -64,7 +60,7 @@ public class FXMLDocumentController implements Initializable {
 
          
  
- 
+  
   
   
   
@@ -192,35 +188,6 @@ public class FXMLDocumentController implements Initializable {
     private ImageView regal;
     @FXML
     private Label ks_ta;
-    @FXML
-    private TableColumn<Person, String> adres;
-    @FXML
-    private TableColumn<Person, String> nip;
-    
-    @FXML private javafx.scene.control.TableView<zaklad> tab_zak;
-    @FXML
-    private TableColumn<zaklad, String> zak_nazwa;
-    @FXML
-    private TableColumn<zaklad, String> zak_adres;
-    @FXML
-    private TableColumn<zaklad, String> zak_typ;
-    @FXML private javafx.scene.control.TableView<hurtownia> hurt;
-    @FXML
-    private TableColumn<hurtownia, String> hurt_nazwa;
-    @FXML
-    private TableColumn<hurtownia, String> hurt_wla;
-    @FXML
-    private TableColumn<hurtownia, Float> hurt_zysk;
-    @FXML
-    private TableColumn<hurtownia, String> hurt_data;
-    @FXML
-    private Menu zapytania;
-    @FXML
-    private MenuItem zyski;
-    @FXML
-    private MenuItem ilosc;
-    @FXML
-    private MenuItem dl_dz;
     
     
      ObservableList<Person>getKsiazki(){
@@ -231,17 +198,6 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        LocalDate myObj = LocalDate.now();
-        LocalDate myObj1 = LocalDate.of(2002, 05, 2);
-        
-       // LocalDate c1= Period.between(myObj, myObj1).getYears();
-       
-        int c =Period.between(myObj1, myObj).getYears();
-        
-        System.out.println(myObj);
-        //c=myObj.minus(Period.ofDays(4));
-        System.out.println(c);
         regal.setFitWidth(568.0);
         menu_zwrot1.setDisable(true);
         tab_ksiazka.setVisible(false);
@@ -249,7 +205,6 @@ public class FXMLDocumentController implements Initializable {
         menu_zwrot.setDisable(true);
         tab.setVisible(true);
         tab.setVisible(true);
-        
         ks_ta.setVisible(false);
         tytul.setCellValueFactory(new PropertyValueFactory<>("Tytuł"));
           autor.setCellValueFactory(new PropertyValueFactory<>("Autor"));
@@ -259,9 +214,6 @@ public class FXMLDocumentController implements Initializable {
 //tab_ksiazka.setStyle("-fx-text-fill: #dfdfdf; -fx-font-size: 14px; -fx-background-color:  #a80000");
  
         //
-        
-        
-        
         witaj.setVisible(false);
        logg.setVisible(false);
        witaj1.setVisible(false);
@@ -473,57 +425,6 @@ public void addUsers() throws SQLException {
        wyczysc_zwrot.setVisible(false);
         zwrot_ksiazka.setVisible(false);
          zwrot_login.setVisible(false);
-         
-         
-         ObservableList<zaklad> data = FXCollections.observableArrayList();
-String sql1="select zaklady_fryz.nazwa, (adresy.miejscowosc, adresy.ulica, adresy.nr_domu, adresy.kod)\n" +
-"as adres, typy.typ  from zaklady_fryz inner join adresy on zaklady_fryz.adres=adresy.id_adresu\n" +
-"inner join typy on zaklady_fryz.typ=typy.id_typu";
-                     try {
-                         preparedStatement=con.prepareStatement(sql1);
-                        resultSet=preparedStatement.executeQuery();
-                       
-            
-                         while(resultSet.next()){
-                   //int id_gry=resultSet.getInt("id_wlasciciela");
-                   String nazwa=resultSet.getString("nazwa");
-             
-                   String adres=resultSet.getString("adres");
-                   String typ=resultSet.getString("typ");
-                  
-                  data.add(new zaklad(nazwa,adres,typ));
-                   }                       
-                        
-                     } catch (SQLException ex) {
-                         Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-                     }
-    
-    zak_nazwa.setMinWidth(94);
-    zak_nazwa.setCellValueFactory(new PropertyValueFactory<zaklad, String>("isActiveCol"){
-        @Override
-        public ObservableValue<String> call(TableColumn.CellDataFeatures<zaklad, String> param) {
-            return new ReadOnlyObjectWrapper(param.getValue().getFirstName());
-        }
-    });
-    zak_adres.setMinWidth(94);
-    zak_adres.setCellValueFactory(new PropertyValueFactory<zaklad, String>("userNameCol"){
-        @Override
-        public ObservableValue<String> call(TableColumn.CellDataFeatures<zaklad, String> param) {
-            return new ReadOnlyObjectWrapper(param.getValue().getRok());
-        }
-    });
-    zak_typ.setMinWidth(94);
-    zak_typ.setCellValueFactory(new PropertyValueFactory<zaklad, String>("taskCol"){
-        @Override
-        public ObservableValue<String> call(TableColumn.CellDataFeatures<zaklad, String> param) {
-            return new ReadOnlyObjectWrapper(param.getValue().getLastName());
-        }
-    });
-    
-    tab_zak.setItems(data);
-    
-         
-         
     }
 
     @FXML
@@ -637,64 +538,6 @@ int pom=0;
       ks_ta.setVisible(false);
       password_field.setVisible(false);
       tym=0;
-      
-      ObservableList<hurtownia> data = FXCollections.observableArrayList();
-String sql1="select zaklady_fryz.nazwa as Zakład, (wlasciciele.imie, wlasciciele.nazwisko)\n" +
-"as Właściciel, hurtownia.zysk, hurtownia.data_utw\n" +
-"from hurtownia inner join zaklady_fryz on hurtownia.id_zakladu=zaklady_fryz.id_zakladu\n" +
-"inner join wlasciciele on hurtownia.id_wlasciciela=wlasciciele.id_wlasciciela";
-                     try {
-                         preparedStatement=con.prepareStatement(sql1);
-                        resultSet=preparedStatement.executeQuery();
-                       
-            
-                         while(resultSet.next()){
-                   //int id_gry=resultSet.getInt("id_wlasciciela");
-                   String nazwa=resultSet.getString("Zakład");
-             
-                   String adres=resultSet.getString("Właściciel");
-                   float typ=resultSet.getFloat("zysk");
-                  String dat_utw=resultSet.getString("data_utw");
-                  data.add(new hurtownia(nazwa,adres,typ,dat_utw));
-                   }                       
-                        
-                     } catch (SQLException ex) {
-                         Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-                     }
-    
-    hurt_nazwa.setMinWidth(94);
-    hurt_nazwa.setCellValueFactory(new PropertyValueFactory<hurtownia, String>("isActiveCol"){
-        @Override
-        public ObservableValue<String> call(TableColumn.CellDataFeatures<hurtownia, String> param) {
-            return new ReadOnlyObjectWrapper(param.getValue().getFirstName());
-        }
-    });
-    hurt_wla.setMinWidth(94);
-    hurt_wla.setCellValueFactory(new PropertyValueFactory<hurtownia, String>("userNameCol"){
-        @Override
-        public ObservableValue<String> call(TableColumn.CellDataFeatures<hurtownia, String> param) {
-            return new ReadOnlyObjectWrapper(param.getValue().getRok());
-        }
-    });
-    hurt_zysk.setMinWidth(94);
-    hurt_zysk.setCellValueFactory(new PropertyValueFactory<hurtownia, Float>("taskCol"){
-        @Override
-        public ObservableValue<Float> call(TableColumn.CellDataFeatures<hurtownia, Float> param) {
-            return new ReadOnlyObjectWrapper(param.getValue().getLastName());
-        }
-    });
-    
-    hurt_data.setMinWidth(94);
-    hurt_data.setCellValueFactory(new PropertyValueFactory<hurtownia, String>("taskCol"){
-        @Override
-        public ObservableValue<String> call(TableColumn.CellDataFeatures<hurtownia, String> param) {
-            return new ReadOnlyObjectWrapper(param.getValue().getLastName1());
-        }
-    });
-    
-    hurt.setItems(data);
-      
-      
     }
 
 Connection con=null;
@@ -1159,24 +1002,20 @@ else {
         ks_ta.setVisible(true);
         log.setVisible(false);
         ObservableList<Person> data = FXCollections.observableArrayList();
-String sql1="select imie, nazwisko,telefon,pesel, (adresy.miejscowosc, adresy.ulica, adresy.nr_domu, adresy.kod)\n" +
-"as adres,nip from wlasciciele inner join adresy\n" +
-"on wlasciciele.adres=adresy.id_adresu;";
+String sql1="select * from ksiazki";
                      try {
                          preparedStatement=con.prepareStatement(sql1);
                         resultSet=preparedStatement.executeQuery();
                        
             
                          while(resultSet.next()){
-                   //int id_gry=resultSet.getInt("id_wlasciciela");
-                   String nazwa=resultSet.getString("imie");
-                   String rok_wydania=resultSet.getString("nazwisko");
-                   String gatunek=resultSet.getString("telefon");
-                   String producent=resultSet.getString("pesel");
-                   String adres=resultSet.getString("adres");
-                   String nip=resultSet.getString("nip");
+                   int id_gry=resultSet.getInt("id_ksiazki");
+                   String nazwa=resultSet.getString("tytul");
+                   String rok_wydania=resultSet.getString("autor");
+                   String gatunek=resultSet.getString("rok_wydania");
+                   String producent=resultSet.getString("gatunek");
                   
-                  data.add(new Person(nazwa, rok_wydania,gatunek ,producent,adres,nip));
+                  data.add(new Person(producent, nazwa,rok_wydania ,gatunek));
                    }                       
                         
                      } catch (SQLException ex) {
@@ -1187,7 +1026,7 @@ String sql1="select imie, nazwisko,telefon,pesel, (adresy.miejscowosc, adresy.ul
     tytul.setCellValueFactory(new PropertyValueFactory<Person, String>("isActiveCol"){
         @Override
         public ObservableValue<String> call(TableColumn.CellDataFeatures<Person, String> param) {
-            return new ReadOnlyObjectWrapper(param.getValue().getFirstName());
+            return new ReadOnlyObjectWrapper(param.getValue().getLastName());
         }
     });
     autor.setMinWidth(94);
@@ -1201,28 +1040,14 @@ String sql1="select imie, nazwisko,telefon,pesel, (adresy.miejscowosc, adresy.ul
     rok.setCellValueFactory(new PropertyValueFactory<Person, String>("taskCol"){
         @Override
         public ObservableValue<String> call(TableColumn.CellDataFeatures<Person, String> param) {
-            return new ReadOnlyObjectWrapper(param.getValue().getLastName());
+            return new ReadOnlyObjectWrapper(param.getValue().getgat());
         }
     });
     gatunek.setMinWidth(94);
     gatunek.setCellValueFactory(new PropertyValueFactory<Person, String>("firstNameCol"){
         @Override
         public ObservableValue<String> call(TableColumn.CellDataFeatures<Person, String> param) {
-            return new ReadOnlyObjectWrapper(param.getValue().getgat());
-        }
-    });
-    adres.setMinWidth(94);
-    adres.setCellValueFactory(new PropertyValueFactory<Person, String>("firstNameCol"){
-        @Override
-        public ObservableValue<String> call(TableColumn.CellDataFeatures<Person, String> param) {
-            return new ReadOnlyObjectWrapper(param.getValue().getadres());
-        }
-    });
-    nip.setMinWidth(94);
-    nip.setCellValueFactory(new PropertyValueFactory<Person, String>("firstNameCol"){
-        @Override
-        public ObservableValue<String> call(TableColumn.CellDataFeatures<Person, String> param) {
-            return new ReadOnlyObjectWrapper(param.getValue().getpesel());
+            return new ReadOnlyObjectWrapper(param.getValue().getFirstName());
         }
     });
     tab_ksiazka.setItems(data);

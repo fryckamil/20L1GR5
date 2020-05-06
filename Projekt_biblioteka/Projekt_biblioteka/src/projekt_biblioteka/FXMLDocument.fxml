@@ -22,21 +22,14 @@
    <children>
       <MenuBar layoutX="-1.0" layoutY="1.0" prefHeight="32.0" prefWidth="182.0">
         <menus>
-          <Menu fx:id="wyp" mnemonicParsing="false" text="Tabele">
+          <Menu fx:id="wyp" mnemonicParsing="false" text="Użytkownik">
                <items>
-                  <MenuItem fx:id="logow" mnemonicParsing="false" onAction="#log1" text="Właściciele" />
-                  <MenuItem fx:id="rej" mnemonicParsing="false" onAction="#konto" text="Zakłady fryzjerskie" />
-                  <MenuItem fx:id="wyl" mnemonicParsing="false" onAction="#wyloguj" text="Hurtownia danych" />
+                  <MenuItem fx:id="logow" mnemonicParsing="false" onAction="#log1" text="Logowanie" />
+                  <MenuItem fx:id="rej" mnemonicParsing="false" onAction="#konto" text="Rejestracja" />
+                  <MenuItem fx:id="wyl" mnemonicParsing="false" onAction="#wyloguj" text="Wyloguj się" />
                </items>
           </Menu>
-            <Menu fx:id="zapytania" mnemonicParsing="false" text="Zapytania">
-              <items>
-                <MenuItem fx:id="zyski" mnemonicParsing="false" text="Zyski zakładów" />
-                  <MenuItem fx:id="ilosc" mnemonicParsing="false" text="Ilość zakładów" />
-                  <MenuItem fx:id="dl_dz" mnemonicParsing="false" text="Długość działania" />
-              </items>
-            </Menu>
-          <Menu mnemonicParsing="false" onAction="#skw" text="Eksploracja danych">
+          <Menu mnemonicParsing="false" onAction="#skw" text="Biblioteka">
             <items>
                   <MenuItem fx:id="tab" mnemonicParsing="false" onAction="#tabela" text="Tabela książek" />
                   <MenuItem fx:id="menu_zwrot1" mnemonicParsing="false" onAction="#wypozycz1" text="Wypożycz książkę" />
@@ -108,7 +101,7 @@
                   <Font size="14.0" />
                </font>
             </PasswordField>
-            <Label alignment="CENTER" layoutX="213.0" layoutY="-2.0" prefHeight="106.0" prefWidth="727.0" style="-fx-background-color: #a80000;" text="e-Biblioteka" textFill="#cfcfcf">
+            <Label alignment="CENTER" layoutX="175.0" layoutY="-2.0" prefHeight="106.0" prefWidth="765.0" style="-fx-background-color: #a80000;" text="e-Biblioteka" textFill="#cfcfcf">
          <font>
             <Font name="Segoe UI Black" size="63.0" />
          </font>
@@ -239,14 +232,12 @@
             <Font name="Segoe UI Black" size="40.0" />
          </font>
       </Label>
-      <TableView fx:id="tab_ksiazka" accessibleRole="TABLE_CELL" accessibleText="cvc" editable="true" layoutX="94.0" layoutY="218.0" opacity="0.78" prefHeight="442.0" prefWidth="740.0" tableMenuButtonVisible="true">
+      <TableView fx:id="tab_ksiazka" accessibleRole="TABLE_CELL" accessibleText="cvc" editable="true" layoutX="447.0" layoutY="236.0" prefHeight="442.0" prefWidth="492.0" tableMenuButtonVisible="true">
         <columns>
-          <TableColumn fx:id="tytul" prefWidth="129.3" text="Imię" />
-          <TableColumn fx:id="autor" prefWidth="133.3" text="Nazwisko" />
-            <TableColumn fx:id="rok" minWidth="0.0" prefWidth="88.0" text="Telefon" />
-            <TableColumn fx:id="gatunek" prefWidth="108.0" text="PESEL" />
-            <TableColumn fx:id="adres" prefWidth="73.0" text="Adres" />
-            <TableColumn fx:id="nip" minWidth="0.0" prefWidth="92.0" text="NIP" />
+          <TableColumn fx:id="tytul" prefWidth="129.3" text="Tytuł" />
+          <TableColumn fx:id="autor" prefWidth="133.3" text="Autor" />
+            <TableColumn fx:id="rok" prefWidth="77.0" text="Rok wydania" />
+            <TableColumn fx:id="gatunek" prefWidth="133.3" text="Gatunek" />
         </columns>
          <opaqueInsets>
             <Insets />
@@ -257,20 +248,5 @@
             <Font name="Segoe UI Black" size="61.0" />
          </font>
       </Label>
-      <TableView fx:id="tab_zak" layoutY="100.0" prefHeight="301.0" prefWidth="366.0">
-        <columns>
-          <TableColumn fx:id="zak_nazwa" prefWidth="75.0" text="Nazwa" />
-          <TableColumn fx:id="zak_adres" prefWidth="75.0" text="Adres" />
-            <TableColumn fx:id="zak_typ" prefWidth="75.0" text="Typ" />
-        </columns>
-      </TableView>
-      <TableView fx:id="hurt" layoutX="370.0" layoutY="86.0" prefHeight="240.0" prefWidth="336.0">
-        <columns>
-          <TableColumn fx:id="hurt_nazwa" prefWidth="75.0" text="Nazwa zakładu" />
-          <TableColumn fx:id="hurt_wla" prefWidth="75.0" text="Właściciel" />
-            <TableColumn fx:id="hurt_zysk" prefWidth="75.0" text="Zysk" />
-            <TableColumn fx:id="hurt_data" prefWidth="75.0" text="Data utworzenia" />
-        </columns>
-      </TableView>
    </children>
 </AnchorPane>
