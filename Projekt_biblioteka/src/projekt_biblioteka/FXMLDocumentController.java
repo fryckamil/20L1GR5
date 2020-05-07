@@ -684,7 +684,7 @@ Connection con=null;
         if(licznik_log!=licznik_wierszy && id_woj1!=0 && pom==1 && !b.equals(""))
                {
                    
-            //
+            ///
                 String sql1="INSERT INTO wypozyczenia VALUES (null,'"+id_woj2+"','"+id_woj1+"','"+myObj+"','"+d+"')";
                 try {
             preparedStatement=con.prepareStatement(sql1);
