@@ -12,64 +12,50 @@ import javafx.beans.property.SimpleStringProperty;
  * @author Kamil
  */
 public class Person {
-    public String imie = null;
-    public String nazwisko = null;
-    public String telefon = null;
-    public String pesel = null;
-    public String adres = null;
-   public String nip = null;
+    public String firstName = null;
+    public String lastName = null;
+    public String rok = null;
+    public String gat = null;
 
     public Person() {
     }
 
-    public Person(String imie, String nazwisko,String telefon, String pesel,String adres,String nip) {
-        this.imie = imie;
-        this.nazwisko = nazwisko;
-        this.telefon = telefon;
-        this.pesel = pesel;
-        this.adres = adres;
-        this.nip = nip;
+    public Person(String firstName, String lastName,String rok, String gat) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.rok = rok;
+        this.gat = gat;
     }
 
     public String getFirstName() {
-        return imie;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-        this.imie = imie;
+        this.firstName = firstName;
     }
     
     public String getRok() {
-        return nazwisko;
+        return rok;
     }
 
     public void setRok(String rok) {
-        this.nazwisko = nazwisko;
+        this.rok = rok;
     }
 
     public String getLastName() {
-        return telefon;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        this.telefon = telefon;
+        this.lastName = lastName;
     }
     
      public String getgat() {
-        return pesel;
+        return gat;
     }
 
     public void setgat(String lastName) {
-        this.pesel = pesel;
+        this.gat = gat;
     }
-    public String getadres() {
-        return adres;
-    }
-
-
-    public String getpesel() {
-        return nip;
-    }
-
-    
 }

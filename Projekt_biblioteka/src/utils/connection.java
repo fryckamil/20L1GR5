@@ -19,11 +19,10 @@ public class connection {
     public static Connection conDB() 
     {
         try {
-            Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost/Zaklady_fryzjerskie","postgres","bronz7");
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/biblioteka_n","root","");
        return con;
         } catch (Exception ex) {
-            System.out.println(ex);
             return null;
         }
     
