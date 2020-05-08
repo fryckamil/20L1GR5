@@ -721,7 +721,7 @@ else {
     }
     
 
-    ////
+    /////
 
     @FXML
     private void log1(ActionEvent event) {
