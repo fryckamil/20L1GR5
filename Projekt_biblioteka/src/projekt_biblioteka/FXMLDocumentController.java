@@ -49,6 +49,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
+
 import utils.connection;
 
 /**
@@ -66,10 +67,8 @@ public class FXMLDocumentController implements Initializable {
   
     @FXML
     private Menu wyp;
-    @FXML
-    private Label lagin;
-    @FXML
-    private TextField login_pod;
+    
+    
     @FXML
     private ComboBox<String> wybor;
     ObservableList<String> list=FXCollections.observableArrayList(
@@ -77,20 +76,14 @@ public class FXMLDocumentController implements Initializable {
        
     );
    
-    @FXML
-    private Label data_wyp;
-    @FXML
-    private TextField data_wyp_podaj;
-    @FXML
-    private Label data_zwr;
-    @FXML
-    private TextField data_zwr_podaj;
-    @FXML
-    private Button wyczysc;
+    
+    
+    
+    
+    
     @FXML
     private Button wypozysz;
-    @FXML
-    private Label wyb_ks;
+    
     @FXML
     private TextField surname_field;
     @FXML
@@ -165,8 +158,7 @@ public class FXMLDocumentController implements Initializable {
     private Button laduj;
     @FXML
     private TextField pod_data_zwt;
-    @FXML
-    private TextField logg;
+    
     @FXML
     private Text log_po1;
     @FXML
@@ -187,6 +179,8 @@ public class FXMLDocumentController implements Initializable {
     private ImageView regal;
     @FXML
     private Label ks_ta;
+    @FXML
+    private ComboBox<String> wybor_zwrot;
     
     
      ObservableList<Person>getKsiazki(){
@@ -194,10 +188,11 @@ public class FXMLDocumentController implements Initializable {
          //ksiazki.add(new Person("John", "Doe",0,""));
          return ksiazki;
      }
-    
+    int tm;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         regal.setFitWidth(568.0);
+        wybor_zwrot.setVisible(false);
         menu_zwrot1.setDisable(true);
         tab_ksiazka.setVisible(false);
         wyl.setVisible(false);
@@ -214,7 +209,7 @@ public class FXMLDocumentController implements Initializable {
  
         //
         witaj.setVisible(false);
-       logg.setVisible(false);
+      
        witaj1.setVisible(false);
         pod_data_zwt.setVisible(false);
                 log_po.setVisible(false);
@@ -234,21 +229,21 @@ public class FXMLDocumentController implements Initializable {
         wybor.setStyle("-fx-text-fill: #dfdfdf; -fx-font-size: 14px; -fx-background-color:  #a80000");
         wybor.setVisible(false);
       wypozysz.setVisible(false);
-      wyczysc.setVisible(false);
-      data_zwr_podaj.setVisible(false);
-      data_zwr.setVisible(false);
-      data_wyp_podaj.setVisible(false);
-      data_wyp.setVisible(false);
-      lagin.setVisible(false);
-      login_pod.setVisible(false);
-      wyb_ks.setVisible(false);
       
-      data_zwr_podaj.setStyle("-fx-text-fill: #dfdfdf; -fx-font-size: 14px; -fx-background-color:  #a80000");
-      data_zwr.setStyle("-fx-text-fill: #dfdfdf; -fx-font-size: 14px; -fx-background-color:  #a80000");
-      data_wyp_podaj.setStyle("-fx-text-fill: #dfdfdf; -fx-font-size: 14px; -fx-background-color:  #a80000");
-      data_wyp.setStyle("-fx-text-fill: #dfdfdf; -fx-font-size: 14px; -fx-background-color:  #a80000");
-      lagin.setStyle("-fx-text-fill: #dfdfdf; -fx-font-size: 14px; -fx-background-color:  #a80000");
-      login_pod.setStyle("-fx-text-fill: #dfdfdf; -fx-font-size: 14px; -fx-background-color:  #a80000");
+      
+      
+      
+     
+      
+      
+      
+      
+      
+      
+      
+      
+      
+     
       pod_data_zwt.setStyle("-fx-text-fill: #dfdfdf; -fx-font-size: 14px; -fx-background-color:  #a80000");;
       
       surname_field.setVisible(false);
@@ -320,13 +315,17 @@ public void addUsers() throws SQLException {
     public FXMLDocumentController (){
        con=connection.conDB();
     }
-    
+    int id_woj1=0;
+                            int id_woj2=0;
+                            int licznik_wierszy=0, licznik_log=0;
     @FXML
     private void wypozycz1(ActionEvent event) {
         menu_zwrot1.setDisable(false);
         regal.setFitWidth(568.0);
         menu_zwrot.setDisable(false);
         rej.setDisable(true);
+        tm=0;
+        wybor_zwrot.setVisible(false);
          witaj.setVisible(false);
          log_po1.setVisible(false);
          ks_ta.setVisible(false);
@@ -339,7 +338,7 @@ public void addUsers() throws SQLException {
          
       login_field1.setVisible(false);
       wybor.setVisible(true);
-      logg.setVisible(true);
+     
       number_field1.setVisible(false);
       name_field1.setVisible(false);
       loginSingInButton1.setVisible(true);
@@ -409,7 +408,7 @@ public void addUsers() throws SQLException {
          ks_ta.setVisible(false);
          log_po1.setVisible(false);
          pod_data_zwt.setVisible(false);
-         
+         wybor_zwrot.setVisible(false);
           witaj.setVisible(false);
                 log_po.setVisible(false);
                 wyl.setVisible(false);
@@ -449,133 +448,14 @@ public void addUsers() throws SQLException {
         zwrot_ksiazka.setVisible(false);
          zwrot_login.setVisible(false);
     }
-
-    @FXML
-    private void zwrot(ActionEvent event) {
-        menu_zwrot1.setDisable(false);
-         menu_zwrot.setDisable(false);
-         regal.setFitWidth(568.0);
-         ks_ta.setVisible(false);
-         log_po1.setVisible(false);
-         rej.setDisable(true);
-         
-         pod_data_zwt.setVisible(false);
-         tab_ksiazka.setVisible(false);
-         
-          witaj.setVisible(false);
-                log_po.setVisible(false);
-                logow.setVisible(false);
-                wyl.setVisible(true);
-        
-        utw_konta.setVisible(false);
-      wypo_ks.setVisible(false);
-      zwrot_ksiazki.setVisible(true);
-      
-      wroc.setVisible(false);
-      
-       logowanie.setVisible(false);
-                haslo_login.setVisible(false);
-                log.setVisible(false);
-                 zal.setVisible(false);
-      
-        zwrot_wyslij.setVisible(true);
-       wyczysc_zwrot.setVisible(true);
-        zwrot_ksiazka.setVisible(true);
-         zwrot_login.setVisible(true);
-         
-         login_field1.setVisible(false);
-      wybor.setVisible(false);
-      number_field1.setVisible(false);
-      name_field1.setVisible(false);
-      loginSingInButton1.setVisible(false);
-      first_lable.setVisible(false);
-      registerSingUpButton1.setVisible(false);
-      password_field1.setVisible(false);
-      
-      surname_field.setVisible(false);
-      login_field.setVisible(false);
-      number_field.setVisible(false);
-      name_field.setVisible(false);
-      loginSingInButton.setVisible(false);
-      first_lable.setVisible(false);
-      registerSingUpButton.setVisible(false);
-      password_field.setVisible(false);
-    }
-int tym=0;
-String b="";
-int pom=0;
-    @FXML
-    private void wyloguj(ActionEvent event) {
-        regal.setFitWidth(568.0);
-        logowanie.setVisible(true);
-        ks_ta.setVisible(false);
-        log_po1.setVisible(false);
-                haslo_login.setVisible(true);
-                log.setVisible(true);
-                zal.setVisible(true);
-                tab_ksiazka.setVisible(false);
-                wroc.setVisible(false);
-                wyl.setVisible(false);
-                pod_data_zwt.setVisible(false);
-                logow.setDisable(false);
-                logow.setVisible(true);
-                logowanie.setText("");
-                haslo_login.setText("");
-                wroc.setVisible(false);
-                b="";
-                
-                
-                //wybor.getSelectionModel().getSelectedItem().toString();
-                rej.setDisable(false);
-                
-                menu_zwrot1.setDisable(true);
-         menu_zwrot.setDisable(true);
-         
-          witaj.setVisible(false);
-                log_po.setVisible(false);
-         
-         utw_konta.setVisible(false);
-      wypo_ks.setVisible(false);
-      zwrot_ksiazki.setVisible(false);
-      
-      zwrot_wyslij.setVisible(false);
-       wyczysc_zwrot.setVisible(false);
-        zwrot_ksiazka.setVisible(false);
-         zwrot_login.setVisible(false);
-         
-         login_field1.setVisible(false);
-      wybor.setVisible(false);
-      number_field1.setVisible(false);
-      name_field1.setVisible(false);
-      loginSingInButton1.setVisible(false);
-      first_lable.setVisible(false);
-      registerSingUpButton1.setVisible(false);
-      password_field1.setVisible(false);
-      
-      surname_field.setVisible(false);
-      login_field.setVisible(false);
-      number_field.setVisible(false);
-      name_field.setVisible(false);
-      loginSingInButton.setVisible(false);
-      first_lable.setVisible(false);
-      registerSingUpButton.setVisible(false);
-      ks_ta.setVisible(false);
-      password_field.setVisible(false);
-      tym=0;
-    }
-
-Connection con=null;
- PreparedStatement preparedStatement = null;
- ResultSet resultSet=null;
- 
-
- 
+    
+    
     @FXML
     private void log(ActionEvent event) {
         regal.setFitWidth(568.0);
         tab_ksiazka.setVisible(false);
         ks_ta.setVisible(false);
-        
+        wybor_zwrot.setVisible(false);
          if("kifa".equals(logowanie.getText()) && ("haslo".equals(haslo_login.getText())))
         {
         
@@ -632,6 +512,7 @@ Connection con=null;
       
       
        // wybor.setItems(list);
+       if(tm==0) {
      int id_woj1=0;
                             int id_woj2=0;
                             int licznik_wierszy=0, licznik_log=0;
@@ -695,12 +576,16 @@ Connection con=null;
            b="";
            System.out.println("b"+b);
            wybor.getItems().clear();
+           pod_data_zwt.setText("");
         } catch (SQLException ex) { 
             JOptionPane.showMessageDialog(null,"Nieprawidłowy login!", "Uwaga", JOptionPane.WARNING_MESSAGE); 
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
-           
-
+                
+     //////////////////////////////           
+                
+         
+///////////////////////////////////
     }
 else {    
             wroc.setVisible(true); 
@@ -713,12 +598,286 @@ else {
                 //JOptionPane.showMessageDialog(null,"Nieprawidłowy login i/lub hasło!", "Uwaga", JOptionPane.WARNING_MESSAGE);  
         } //else {wroc.setVisible(true);} 
               
+        }
+        
+        
+        if(tm==1) {
+     int id_woj1=0;
+                            int id_woj2=0;
+                            int licznik_wierszy=0, licznik_log=0;
+        String c=name_field1.getText().toString();
+         b=( String) wybor.getValue();
+         String d=pod_data_zwt.getText();
+         
+                  LocalDate myObj = LocalDate.now(); 
+                   String sql="SELECT * FROM klienci WHERE login= ?;";
+                  
+        try {
+            preparedStatement=con.prepareStatement(sql);
+            preparedStatement.setString(1,login1);
+            resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+                   int id_klienta=resultSet.getInt("id_klienta");
+                   String login=resultSet.getString("login");
+                   
+                   if(!login1.equals(login)) {    licznik_log++;  }
+                   else id_woj2=id_klienta;
+                   licznik_wierszy++;
+                   
+                   }
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                   String sql2="select ksiazki.tytul from wypozyczenia inner join ksiazki on wypozyczenia.id_ksiazki=ksiazki.id_ksiazki where id_klienta='"+id_woj2+"'";
+                   
+                   try {
+            preparedStatement=con.prepareStatement(sql2);
+            preparedStatement.setString(1,b);
+            resultSet=preparedStatement.executeQuery();
+           while(resultSet.next()){
+                   int id_gry=resultSet.getInt("id_ksiazki");
+                   String nazwa_gry=resultSet.getString("tytul");
+                  
+                   pom=1;
+                   
+                   if(b.equals(nazwa_gry)) {  id_woj1=id_gry;   break; }
+                   else { 
+                       break;
+                   
+                   }}
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                   
+              if(id_woj1!=0 && !b.equals(""))    { 
+        if(licznik_log!=licznik_wierszy && id_woj1!=0 && pom==1 && !b.equals(""))
+               {
+                   
+            ///
+                String sql1="INSERT INTO wypozyczenia VALUES (null,'"+id_woj2+"','"+id_woj1+"','"+myObj+"','"+d+"')";
+                try {
+            preparedStatement=con.prepareStatement(sql1);
+           preparedStatement.executeUpdate();
+            //wroc.setVisible(true);
+            tym=2;
+            JOptionPane.showMessageDialog(null,"Wypożyczyłeś książkę!", "Brawo", JOptionPane.INFORMATION_MESSAGE);
+           b="";
+           System.out.println("b"+b);
+           wybor.getItems().clear();
+        } catch (SQLException ex) { 
+            JOptionPane.showMessageDialog(null,"Nieprawidłowy login!", "Uwaga", JOptionPane.WARNING_MESSAGE); 
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+     //////////////////////////////           
+                
+         
+///////////////////////////////////
+    }
+else {    
+            wroc.setVisible(true); 
+            
+               } } else if((b.equals(""))) { wroc.setVisible(true); 
+             // witaj .setVisible(true);
+          //  log_po.setVisible(true); 
+               System.out.println("Wybierz książkę");
+    
+                //JOptionPane.showMessageDialog(null,"Nieprawidłowy login i/lub hasło!", "Uwaga", JOptionPane.WARNING_MESSAGE);  
+        } //else {wroc.setVisible(true);} 
+              
+        }
+        
+        
+        
         }}else{ JOptionPane.showMessageDialog(null,"Nieprawidłowy login i/lub hasło!", "Uwaga", JOptionPane.WARNING_MESSAGE); }
       
        
     
         
     }
+    
+
+    @FXML
+    private void zwrot(ActionEvent event) {
+       wybor_zwrot.getItems().clear();
+        menu_zwrot1.setDisable(false);
+         menu_zwrot.setDisable(false);
+         regal.setFitWidth(568.0);
+         ks_ta.setVisible(false);
+         log_po1.setVisible(false);
+         zwrot_ksiazki.setVisible(false);
+         rej.setDisable(true);
+         wybor_zwrot.setVisible(true);
+         name_field.setVisible(false);
+         name_field1.setVisible(false);
+         tm=1;
+         pod_data_zwt.setVisible(false);
+         tab_ksiazka.setVisible(false);
+         pod_data_zwt.setVisible(true);
+          witaj.setVisible(false);
+                log_po.setVisible(false);
+                logow.setVisible(false);
+                wyl.setVisible(true);
+                zwrot_login.setVisible(true);
+        
+        utw_konta.setVisible(false);
+        zwrot_login.setVisible(false);
+      wypo_ks.setVisible(false);
+      zwrot_ksiazki.setVisible(true);
+      
+      wroc.setVisible(false);
+      
+       logowanie.setVisible(false);
+                haslo_login.setVisible(false);
+                log.setVisible(false);
+                 zal.setVisible(false);
+      
+        zwrot_wyslij.setVisible(true);
+       wyczysc_zwrot.setVisible(true);
+        zwrot_ksiazka.setVisible(true);
+         
+         
+         login_field1.setVisible(false);
+      wybor.setVisible(false);
+      number_field1.setVisible(false);
+     
+      loginSingInButton1.setVisible(false);
+      first_lable.setVisible(false);
+      registerSingUpButton1.setVisible(false);
+      password_field1.setVisible(false);
+      
+      surname_field.setVisible(false);
+      login_field.setVisible(false);
+      number_field.setVisible(false);
+      name_field.setVisible(false);
+      loginSingInButton.setVisible(false);
+      first_lable.setVisible(false);
+      registerSingUpButton.setVisible(false);
+      password_field.setVisible(false);
+      log_po1.setVisible(true);
+      log_po1.setText("Jesteś zalogowany jako "+logowanie.getText());
+    id_woj1=0;
+                           id_woj2=0;
+                          licznik_wierszy=0; licznik_log=0;
+    
+      String login1=logowanie.getText();
+      System.out.print("LOG"+login1);
+            String sql="SELECT * FROM klienci WHERE login= ?;";
+                  
+        try {
+            preparedStatement=con.prepareStatement(sql);
+            preparedStatement.setString(1,login1);
+            resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+                   int id_klienta=resultSet.getInt("id_klienta");
+                   String login=resultSet.getString("login");
+                   
+                   if(!login1.equals(login)) {    licznik_log++;  }
+                   else id_woj2=id_klienta;
+                   licznik_wierszy++;
+                   
+                   }
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+        String ksiazka="SELECT ksiazki.tytul FROM wypozyczenia INNER JOIN ksiazki ON wypozyczenia.id_ksiazki=ksiazki.id_ksiazki where id_klienta="+id_woj2+";";
+      try {  
+                   preparedStatement=con.prepareStatement(ksiazka);
+            
+            resultSet=preparedStatement.executeQuery();
+                   
+                  System.out.print("wwww "+id_woj2);
+                   
+                   while(resultSet.next()){
+                   
+                   String nazwa=resultSet.getString("tytul");
+                 // list=FXCollections.observableArrayList(nazwa);
+                   wybor_zwrot.getItems().add(nazwa);
+                   }
+            } catch (SQLException ex) {
+       
+    JOptionPane.showMessageDialog(null,ex, "Uwaga", JOptionPane.WARNING_MESSAGE);
+    
+       // System.err.println(ex.getMessage());
+       
+       
+    }   
+      
+      
+    }
+int tym=0;
+String b="";
+String bz="";
+int pom=0;
+    @FXML
+    private void wyloguj(ActionEvent event) {
+        regal.setFitWidth(568.0);
+        logowanie.setVisible(true);
+        wybor_zwrot.setVisible(false);
+        ks_ta.setVisible(false);
+        log_po1.setVisible(false);
+                haslo_login.setVisible(true);
+                log.setVisible(true);
+                zal.setVisible(true);
+                tab_ksiazka.setVisible(false);
+                wroc.setVisible(false);
+                wyl.setVisible(false);
+                pod_data_zwt.setVisible(false);
+                logow.setDisable(false);
+                logow.setVisible(true);
+                logowanie.setText("");
+                haslo_login.setText("");
+                wroc.setVisible(false);
+                b="";
+                
+                
+                //wybor.getSelectionModel().getSelectedItem().toString();
+                rej.setDisable(false);
+                
+                menu_zwrot1.setDisable(true);
+         menu_zwrot.setDisable(true);
+         
+          witaj.setVisible(false);
+                log_po.setVisible(false);
+         
+         utw_konta.setVisible(false);
+      wypo_ks.setVisible(false);
+      zwrot_ksiazki.setVisible(false);
+      
+      zwrot_wyslij.setVisible(false);
+       wyczysc_zwrot.setVisible(false);
+        zwrot_ksiazka.setVisible(false);
+         zwrot_login.setVisible(false);
+         
+         login_field1.setVisible(false);
+      wybor.setVisible(false);
+      number_field1.setVisible(false);
+      name_field1.setVisible(false);
+      loginSingInButton1.setVisible(false);
+      first_lable.setVisible(false);
+      registerSingUpButton1.setVisible(false);
+      password_field1.setVisible(false);
+      
+      surname_field.setVisible(false);
+      login_field.setVisible(false);
+      number_field.setVisible(false);
+      name_field.setVisible(false);
+      loginSingInButton.setVisible(false);
+      first_lable.setVisible(false);
+      registerSingUpButton.setVisible(false);
+      ks_ta.setVisible(false);
+      password_field.setVisible(false);
+      tym=0;
+    }
+
+Connection con=null;
+ PreparedStatement preparedStatement = null;
+ ResultSet resultSet=null;
+ 
+
+ 
     
 
     /////
@@ -733,6 +892,7 @@ else {
             pod_data_zwt.setVisible(false);
             wyl.setVisible(false);
             ks_ta.setVisible(false);
+            wybor_zwrot.setVisible(false);
             rej.setDisable(false);
             log_po1.setVisible(false);
             wroc.setVisible(false);
@@ -789,13 +949,13 @@ else {
       number_field1.setText("");
       name_field1.setText("");
       tab_ksiazka.setVisible(false);
-      
+      pod_data_zwt.setText("");
       first_lable.setText("");
       ks_ta.setVisible(false);
       log_po1.setVisible(false);
       password_field1.setText("");
       log_po1.setText("");
-      
+      wybor_zwrot.setVisible(false);
       surname_field.setText("");
       login_field.setText("");
       number_field.setText("");
@@ -934,6 +1094,7 @@ else {
         ks_ta.setVisible(false);
         String nazwisko=surname_field.getText();
         String d=login_field.getText();
+        wybor_zwrot.setVisible(false);
         String haslo=password_field.getText();
         Integer number=-1;
         byte num[]=new byte[9];
@@ -1009,8 +1170,15 @@ else {
         regal.setFitWidth(568);
         ks_ta.setVisible(true);
         log_po.setVisible(false);
+        wybor_zwrot.setVisible(false);
+        utw_konta.setVisible(false);
         log_po1.setVisible(false);
+        surname_field.setVisible(false);
+        wypo_ks.setVisible(false);
+        zwrot_ksiazki.setVisible(false);
         witaj1.setVisible(false);
+        name_field.setVisible(false);
+        zwrot_login.setVisible(false);
         witaj.setVisible(false);
         log.setVisible(false);
         ObservableList<Person> data = FXCollections.observableArrayList();
@@ -1089,4 +1257,119 @@ String sql1="select * from ksiazki";
                          Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
                      }
   */  }
-}
+
+    @FXML
+    private void zwrot1ks11(ActionEvent event) {
+        
+        
+        System.out.print(id_woj1+" " +id_woj2+" " +licznik_wierszy+" " +licznik_log+" ");
+        bz=( String) wybor_zwrot.getValue();
+           String sql2="SELECT * FROM ksiazki where tytul= ? ;";
+           System.out.print("Ksiazka "+bz);
+                   
+                   try {
+            preparedStatement=con.prepareStatement(sql2);
+            preparedStatement.setString(1,bz);
+            resultSet=preparedStatement.executeQuery();
+           while(resultSet.next()){
+                   int id_gry=resultSet.getInt("id_ksiazki");
+                   String nazwa_gry=resultSet.getString("tytul");
+                  
+                   pom=1;
+                   
+                   if(bz.equals(nazwa_gry)) {  id_woj1=id_gry;   break; }
+                   else { 
+                       break;
+                   
+                   }}
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      if(pom==1)    { 
+        if(pom==1)
+               {
+                   
+            ///  String
+                  
+                String sql1="delete from wypozyczenia where id_klienta="+id_woj2+" and id_ksiazki="+id_woj1+"";
+                try { 
+            preparedStatement=con.prepareStatement(sql1);
+           preparedStatement.executeUpdate();
+            //wroc.setVisible(true);
+            tym=2;
+            JOptionPane.showMessageDialog(null,"Zwróciłeś książkę!", "Brawo", JOptionPane.INFORMATION_MESSAGE);
+           
+           
+        } catch (SQLException ex) { 
+            JOptionPane.showMessageDialog(null,"Nieprawidłowy login!", "Uwaga", JOptionPane.WARNING_MESSAGE); 
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                id_woj1=0;
+                           id_woj2=0;
+                          licznik_wierszy=0; licznik_log=0;
+                          wybor_zwrot.getItems().clear();
+                         
+                         String login1=logowanie.getText();
+      System.out.print("LOG"+login1);
+            String sql="SELECT * FROM klienci WHERE login= ?;";
+                  
+        try {
+            preparedStatement=con.prepareStatement(sql);
+            preparedStatement.setString(1,login1);
+            resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+                   int id_klienta=resultSet.getInt("id_klienta");
+                   String login=resultSet.getString("login");
+                   
+                   if(!login1.equals(login)) {    licznik_log++;  }
+                   else id_woj2=id_klienta;
+                   licznik_wierszy++;
+                   
+                   }
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                         
+                         
+                         
+               String ksiazka="SELECT ksiazki.tytul FROM wypozyczenia INNER JOIN ksiazki ON wypozyczenia.id_ksiazki=ksiazki.id_ksiazki where id_klienta="+id_woj2+";";
+      try {  
+                   preparedStatement=con.prepareStatement(ksiazka);
+            
+            resultSet=preparedStatement.executeQuery();
+                   
+                  System.out.print("wwww "+id_woj2);
+                   
+                   while(resultSet.next()){
+                   
+                   String nazwa=resultSet.getString("tytul");
+                 // list=FXCollections.observableArrayList(nazwa);
+                   wybor_zwrot.getItems().add(nazwa);
+                   }
+            } catch (SQLException ex) {
+       
+    JOptionPane.showMessageDialog(null,ex, "Uwaga", JOptionPane.WARNING_MESSAGE);
+    
+       // System.err.println(ex.getMessage());
+       
+       
+    }       
+                
+                
+                
+     //////////////////////////////           
+                
+         
+///////////////////////////////////
+    }
+else {    
+            System.out.print("if1");
+            
+               } } else {    
+            System.out.print("if2");
+            
+               }
+      
+      
+}}
