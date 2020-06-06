@@ -233,5 +233,7 @@
       <ComboBox fx:id="wybor_zwrot" layoutX="568.0" layoutY="287.0" prefHeight="27.0" prefWidth="366.0" promptText="Wybierz książkę" style="-fx-border-color: black; -fx-background-color: #a80000; -fx-background-radius: 5; -fx-border-radius: 5;"> <effect>
             <DropShadow color="WHITE" />
          </effect></ComboBox>
+      <Button fx:id="pdf1" layoutX="174.0" layoutY="327.0" mnemonicParsing="false" onAction="#pdf_uz" text="Raport uzytkownicy" />
+      <Button fx:id="pdf2" layoutX="242.0" layoutY="275.0" mnemonicParsing="false" onAction="#pdf_wyp" text="Raport wypozyczenia" />
    </children>
 </AnchorPane>

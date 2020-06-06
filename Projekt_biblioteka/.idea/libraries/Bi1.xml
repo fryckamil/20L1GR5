@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Bi1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/projekt_biblioteka/toto/Bi.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

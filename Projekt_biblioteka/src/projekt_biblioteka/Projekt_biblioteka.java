@@ -20,6 +20,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import projekt_biblioteka.reports.TestClass;
+
 
 /**
  *
@@ -29,6 +31,7 @@ public class Projekt_biblioteka extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+        TestClass.testMethod();
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         TableView tableView = new TableView();
 tableView.setLayoutX(125);
