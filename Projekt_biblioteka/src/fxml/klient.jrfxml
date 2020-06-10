@@ -6,7 +6,6 @@
     <field name="imie" class="java.lang.String"/>
     <field name="nazwisko" class="java.lang.String"/>
     <field name="login" class="java.lang.String"/>
-	<field name="haslo" class="java.lang.String"/>
     <field name="numelTelefonu" class="java.lang.String"/>
     <background>
         <band/>
@@ -60,15 +59,6 @@
                 </textElement>
                 <text><![CDATA[Login]]></text>
             </staticText>
-			 <staticText>
-                <reportElement mode="Opaque" x="276" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="cca3ec8c-869b-4016-a098-3225cb3c4171">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="88f77ce9-abdd-420d-962f-0a7a89c4a629"/>
-                </reportElement>
-                <textElement textAlignment="Center">
-                    <font size="14" isBold="true"/>
-                </textElement>
-                <text><![CDATA[Haslo]]></text>
-            </staticText>
             <staticText>
                 <reportElement mode="Opaque" x="414" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6b8ed00d-04b7-4c57-a10f-eebf0237d4a6">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6205a67e-e28e-4ead-b68e-801354402c5f"/>
@@ -111,15 +101,6 @@
                     <font size="14"/>
                 </textElement>
                 <textFieldExpression><![CDATA[$F{login}]]></textFieldExpression>
-            </textField>
-			<textField textAdjust="StretchHeight">
-                <reportElement x="276" y="0" width="138" height="20" uuid="c225553c-cb6a-4f7e-9e80-ffd7699a1488">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="88f77ce9-abdd-420d-962f-0a7a89c4a629"/>
-                </reportElement>
-                <textElement textAlignment="Center">
-                    <font size="14"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{haslo}]]></textFieldExpression>
             </textField>
             <textField textAdjust="StretchHeight">
                 <reportElement x="414" y="0" width="138" height="20" uuid="f5273eaf-9b17-4459-9acc-4bd18ce15aa1">

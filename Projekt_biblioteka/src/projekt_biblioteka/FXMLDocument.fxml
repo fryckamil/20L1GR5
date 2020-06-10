@@ -20,7 +20,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="939.0" style="-fx-background-color: black;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projekt_biblioteka.FXMLDocumentController">
    <children>
-      <MenuBar layoutX="-1.0" layoutY="1.0" prefHeight="32.0" prefWidth="182.0">
+      <MenuBar layoutX="-1.0" layoutY="1.0" prefHeight="32.0" prefWidth="241.0">
         <menus>
           <Menu fx:id="wyp" mnemonicParsing="false" text="Użytkownik">
                <items>
@@ -36,9 +36,17 @@
               <MenuItem fx:id="menu_zwrot" mnemonicParsing="false" onAction="#zwrot" text="Zwrot książki" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" onAction="#skw" text="Zarządzanie">
+               <items>
+                  <MenuItem fx:id="ladujdane" mnemonicParsing="false" onAction="#lad" text="Ładuje dane do bazy" />
+                  <MenuItem fx:id="czyscdane" mnemonicParsing="false" onAction="#czysc" text="Czyść bazę" />
+                  <MenuItem fx:id="rw" mnemonicParsing="false" onAction="#pdf_wyp" text="Raport wypożyczenia" />
+                  <MenuItem fx:id="ru" mnemonicParsing="false" onAction="#pdf_uz" text="Rapot użytkownicy" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
-      <ImageView fx:id="regal" fitHeight="584.0" fitWidth="690.0" layoutX="-121.0" layoutY="105.0">
+      <ImageView fx:id="regal" fitHeight="584.0" fitWidth="690.0" layoutX="-122.0" layoutY="105.0">
                <image>
                   <Image url="@regal.jpg" />
                </image>
@@ -93,12 +101,12 @@
                   <Font size="14.0" />
                </font>
             </PasswordField>
-            <Label alignment="CENTER" layoutX="175.0" layoutY="-2.0" prefHeight="106.0" prefWidth="765.0" style="-fx-background-color: #a80000;" text="e-Biblioteka" textFill="#cfcfcf">
+            <Label alignment="CENTER" layoutX="238.0" layoutY="-2.0" prefHeight="106.0" prefWidth="702.0" style="-fx-background-color: #a80000;" text="e-Biblioteka" textFill="#cfcfcf">
          <font>
             <Font name="Segoe UI Black" size="63.0" />
          </font>
       </Label>
-      <ImageView fitHeight="69.0" fitWidth="174.0" layoutY="34.0">
+      <ImageView fitHeight="69.0" fitWidth="238.0" layoutY="34.0">
          <image>
             <Image url="@logo2.jpg" />
          </image>
@@ -191,14 +199,6 @@
             <Font name="Segoe UI Black" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="baza" layoutX="466.0" layoutY="542.0" mnemonicParsing="false" onAction="#czysc" prefHeight="51.2" prefWidth="182.4" style="-fx-background-color: #a80000; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 10; -fx-border-width: 1;" text="Czyść bazę" textFill="#dfdfdf">
-         <font>
-            <Font name="Segoe UI Black" size="18.0" />
-         </font></Button>
-      <Button fx:id="laduj" layoutX="264.0" layoutY="542.0" mnemonicParsing="false" onAction="#lad" prefHeight="52.0" prefWidth="213.0" style="-fx-background-color: #a80000; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 10; -fx-border-width: 1;" text="Ładuj dane do bazy" textFill="#dfdfdf">
-         <font>
-            <Font name="Segoe UI Black" size="18.0" />
-         </font></Button>
       <TextField fx:id="pod_data_zwt" alignment="CENTER" layoutX="573.0" layoutY="334.0" prefHeight="32.0" prefWidth="366.0" promptText="Data zwrotu rrrr-mm-dd" style="-fx-border-color: black; -fx-background-color: #a80000; -fx-border-radius: 5; -fx-background-radius: 5;">
          <font>
             <Font size="14.0" />
@@ -233,7 +233,5 @@
       <ComboBox fx:id="wybor_zwrot" layoutX="568.0" layoutY="287.0" prefHeight="27.0" prefWidth="366.0" promptText="Wybierz książkę" style="-fx-border-color: black; -fx-background-color: #a80000; -fx-background-radius: 5; -fx-border-radius: 5;"> <effect>
             <DropShadow color="WHITE" />
          </effect></ComboBox>
-      <Button fx:id="pdf1" layoutX="174.0" layoutY="327.0" mnemonicParsing="false" onAction="#pdf_uz" text="Raport uzytkownicy" />
-      <Button fx:id="pdf2" layoutX="242.0" layoutY="275.0" mnemonicParsing="false" onAction="#pdf_wyp" text="Raport wypozyczenia" />
    </children>
 </AnchorPane>
